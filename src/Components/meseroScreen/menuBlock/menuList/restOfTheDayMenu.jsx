@@ -7,10 +7,10 @@ const RestOfTheDayMenu = ({ data, orders, addingItem }) => (
     {data.map((item) => {
       if (item.categoría === 'Resto del día') {
         return (
-          <button type="button" className="btn" onClick={() => addingItem(item, orders)} data-testid={`${item.id}-restday`}>{item.nombre}</button>
+          <button key={item.id} type="button" className="btn" onClick={() => addingItem(item, orders)} data-testid={`${item.id}-restday`}>{item.nombre}</button>
         );
       }
-      // return null;
+      return null;
     })}
   </div>
 );

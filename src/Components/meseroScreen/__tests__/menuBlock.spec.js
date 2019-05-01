@@ -53,6 +53,10 @@ describe('Waiter', () => {
     act(() => {
       fireEvent.click(btnMinus);
     });
+    const btnAddTwice = await waitForElement(() => getByTestId('P1-breakfast'));
+    act(() => {
+      fireEvent.click(btnAddTwice);
+    });
     const btnRestday = getByTestId('render-restday');
     act(() => {
       fireEvent.click(btnRestday);
@@ -61,8 +65,24 @@ describe('Waiter', () => {
     act(() => {
       fireEvent.click(btnRest);
     });
+    const btnTrash = await waitForElement(() => getByTestId('P2-trash'));
+    act(() => {
+      fireEvent.click(btnTrash);
+    });
+    /* const btnTrash2 = await waitForElement(() => getByTestId('P1-trash'));
+    act(() => {
+      fireEvent.click(btnTrash2);
+    }) */
+    const btnSave = getByTestId('save-order');
+    act(() => {
+      fireEvent.click(btnSave);
+    });
+    const btnDelete = getByTestId('delete-order');
+    act(() => {
+      fireEvent.click(btnDelete);
+    });
     const list = getByTestId('orders-container');
-    expect(list.children).toHaveLength(2);
+    expect(list.children).toHaveLength(0);
     const total = getByTestId('total-id');
     expect(total.textContent).toBe('0');
   });

@@ -75,13 +75,13 @@ const Waiter = () => {
             </div>
             <div className="container-fluid">
               <div className="row justify-content-center">
-                <button type="button" className="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 selection" onClick={() => setOrder([])}>Anular orden</button>
-                <button type="button" className="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 selection" onClick={() => saveOrder()}>Enviar a cocina</button>
+                <button type="button" className="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 selection" onClick={() => setOrder([])} data-testid="delete-order">Anular orden</button>
+                <button type="button" className="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-2 selection" onClick={() => saveOrder()} data-testid="save-order">Enviar a cocina</button>
               </div>
             </div>
           </div>
         </div>
-      </div>     
+      </div>
     </div>
   );
   // })
