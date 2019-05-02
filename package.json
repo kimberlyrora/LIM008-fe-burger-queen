@@ -38,6 +38,6 @@
     "firebase-mock": "^2.2.10",
     "mock-cloud-firestore": "^0.9.2",
     "react-testing-library": "^6.1.2",
-    "workbox-build": "^4.3.0"
+    "workbox-build": "^4.3.1"
   }
 }
