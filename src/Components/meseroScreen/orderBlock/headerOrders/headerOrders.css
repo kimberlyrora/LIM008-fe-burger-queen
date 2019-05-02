@@ -8,9 +8,13 @@
 	padding: 6px;
 	border-radius: 10px;
 	display: inline-block;
-		font-weight: 700;
-		font-size: 16px;
+	font-weight: 700;
+	font-size: 16px;
 
+}
+.input{
+	width: 4em;
+	height: 3em;;
 }
 .client{
 background-color: #ffffff;
