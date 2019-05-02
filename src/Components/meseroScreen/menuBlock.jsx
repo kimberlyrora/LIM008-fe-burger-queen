@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../header/header';
 import BreakfastMenu from './menuBlock/menuList/breakfastMenu';
 import RestOfTheDayMenu from './menuBlock/menuList/restOfTheDayMenu';
@@ -55,7 +56,7 @@ const Waiter = () => {
       <div className="first block">
         <div className="container-fluid">
           <div className="row justify-content-center">
-            <div className="title">Menú</div>
+            <div className="title">Menú</div> 
           </div>
           <div className="row justify-content-center">
             <button type="button" className="col-5 col-sm-4 col-md-3 col-lg-2 col-xl-1 selection" onClick={() => setMenu(!menu)} data-testid="render-breakfast">Desayuno</button>
@@ -80,6 +81,5 @@ const Waiter = () => {
       </div>
     </div>
   );
-  // })
 };
 export default Waiter;
