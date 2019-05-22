@@ -7,13 +7,13 @@ describe('BreakfastMenu', () => {
   it('Filtra data con categoría "Desayuno"', () => {
     const data = [
       {
-        id: 1, item: 'item 1', precio: 0, categoría: 'Desayuno',
+        id: 'P1', item: 'item 1', precio: 0, categoría: 'Desayuno',
       },
       {
-        id: 2, item: 'item 2', precio: 0, categoría: 'Resto del día',
+        id: 'P2', item: 'item 2', precio: 0, categoría: 'Resto del día',
       },
       {
-        id: 3, item: 'item 3', precio: 0, categoría: 'Desayuno',
+        id: 'P3', item: 'item 3', precio: 0, categoría: 'Desayuno',
       },
     ];
     const { getByTestId } = render(<BreakfastMenu data={data} />);
@@ -23,30 +23,24 @@ describe('BreakfastMenu', () => {
   it('Muestra nombres del Menú del desayuno', () => {
     const data = [
       {
-        id: 1, nombre: 'item 1', precio: 0, categoría: 'Desayuno',
-      },
-      {
-        id: 3, nombre: 'item 3', precio: 0, categoría: 'Desayuno',
+        id: 'P1', nombre: 'item 1', precio: 0, categoría: 'Desayuno',
       },
     ];
     const { getAllByTestId } = render(<BreakfastMenu data={data} />);
-    const nameList = getAllByTestId('name-rest-breakfast').map(button => button.textContent);
+    const nameList = getAllByTestId('container-breakfast').map(button => button.textContent);
     const fakeData = data.map(c => c.nombre);
     expect(nameList).toEqual(fakeData);
   });
   it('Realiza función al hacer click', () => {
     const data = [
       {
-        id: 1, nombre: 'item 1', precio: 0, categoría: 'Desayuno',
-      },
-      {
-        id: 3, nombre: 'item 3', precio: 0, categoría: 'Desayuno',
+        id: 'P1', nombre: 'item 1', precio: 0, categoría: 'Desayuno',
       },
     ];
     const addingItem = (item) => {
       expect(item).toEqual(data[0]);
     };
     const { getByTestId } = render(<BreakfastMenu data={data} addingItem={addingItem} />);
-    fireEvent.click(getByTestId('name-rest-breakfast'));
+    fireEvent.click(getByTestId('P1-breakfast'));
   });
 });

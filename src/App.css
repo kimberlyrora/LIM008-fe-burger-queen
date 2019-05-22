@@ -1,11 +1,10 @@
 .App {
   text-align: center;
-  background-image: url(./img/burger.jpg);
   background-repeat: repeat;
   max-height: 100%;
   width: 100%;
-  border: none
-  /* background-color: aqua */
+  border: none;
+  /* background-color: aqua */ 
 }
 
 .image{

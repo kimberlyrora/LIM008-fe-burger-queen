@@ -16,37 +16,40 @@ describe('RestOfTheDayMenu', () => {
         id: 3, item: 'item 3', precio: 0, categoría: 'Desayuno',
       },
     ];
-    const { getByTestId } = render(<RestOfTheDayMenu data={data} />);
+    const addingItem = (item) => {
+      expect(item).toEqual(data[0]);
+    };
+    const orders = [{}];
+    const { getByTestId } = render(<RestOfTheDayMenu data={data} addingItem={addingItem} orders={orders} />);
     const container = getByTestId('container-restoftheday');
     expect(container.children).toHaveLength(1);
   });
   it('Muestra nombres del Menú del desayuno', () => {
     const data = [
       {
-        id: 1, nombre: 'item 1', precio: 0, categoría: 'Resto del día',
-      },
-      {
-        id: 3, nombre: 'item 3', precio: 0, categoría: 'Resto del día',
+        id: 'P1', nombre: 'item 1', precio: 0, categoría: 'Resto del día',
       },
     ];
-    const { getAllByTestId } = render(<RestOfTheDayMenu data={data} />);
-    const nameList = getAllByTestId('name-button-restday').map(button => button.textContent);
+    const addItemSecond = (item) => {
+      expect(item).toEqual(data[0]);
+    };
+    const orderSecond = [{}];
+    const { getAllByTestId } = render(<RestOfTheDayMenu data={data} orders={orderSecond} addingItem={addItemSecond} />);
+    const nameList = getAllByTestId('container-restoftheday').map(button => button.textContent);
     const fakeData = data.map(c => c.nombre);
     expect(nameList).toEqual(fakeData);
   });
   it('Realiza función al hacer click', () => {
     const data = [
       {
-        id: 1, nombre: 'item 1', precio: 0, categoría: 'Resto del día',
-      },
-      {
-        id: 3, nombre: 'item 3', precio: 0, categoría: 'Resto del día',
+        id: 'P1', nombre: 'item 1', precio: 0, categoría: 'Resto del día',
       },
     ];
-    const addingItem = (item) => {
+    const addItem = (item) => {
       expect(item).toEqual(data[0]);
     };
-    const { getByTestId } = render(<RestOfTheDayMenu data={data} addingItem={addingItem} />);
-    fireEvent.click(getByTestId('name-button-restday'));
+    const order = [{}];
+    const { getByTestId } = render(<RestOfTheDayMenu data={data} addingItem={addItem} orders={order} />);
+    fireEvent.click(getByTestId('P1-restday'));
   });
 });

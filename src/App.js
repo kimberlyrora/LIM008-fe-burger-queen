@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import './App.css';
 import Waiter from './Components/meseroScreen/menuBlock';
 import About from './Components/chefScreen/ordersToCook';
