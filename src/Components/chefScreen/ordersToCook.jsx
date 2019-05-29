@@ -1,47 +1,61 @@
-import React, { useEffect, useState, Component } from 'react';
+import React, { Component } from 'react';
 import firebase from '../../firebaseConfig';
 import Header from '../header/header';
+import './ordersToCook.css';
 
 const db = firebase.firestore();
-const ordersToCook = () => {
-  const [data, setData] = useState([]);
+class OrdersToCook extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      orders: [],
+    };
+  }
 
-  useEffect(() => {
-    db.collection('Orders').get()
-      .then((json) => {
-        const doc = [];
-        json.forEach((docu) => {
-          doc.push(docu.data());
-        });
-        setData(doc);
+  componentDidMount() {
+    db.collection('Orders').get().then((snapShots) => {
+      this.setState({
+        orders: snapShots.docs.map(doc => ({ id: doc.id, data: doc.data() })),
       });
-  }, []);
-  return (
-    <div>
-      <Header />
-      <div>
-        {data.map((item) => {
-          return (
-            <div key={item.id}>
-              <div>{item.Precio}</div>
-              <div>{item.Fecha}</div>
-              <div>{item.Nombre.name}</div>
+    });
+  }
+
+  render() {
+    const { orders } = this.state;
+    return (
+      <>
+        <Header />
+        <div className="card-columns">
+          {orders && orders !== undefined ? orders.map(order => (
+            <div className="card bg-light mb-3" >
               <div>
-                {item.Productos.map((elem) => {
-                  return (
-                    <div key={elem.id}>
-                      <div>{elem.cantidad}</div>
-                      <div>{elem.nombre}</div>
-                      <div>{elem.precio}</div>
+                {order.data.Fecha.substring(0, 24)}
+              </div>
+              <div>
+                <strong>{order.data.Nombre.name}</strong>
+              </div>
+              <div>
+                {order.data.Precio}
+              </div>
+              <div>
+                {order.data.Productos.map(product => (
+                  <div className="row justify-content-center">
+                    <div>
+                      {product.nombre}
                     </div>
-                  );
-                })}
+                    <div>
+                      {product.cantidad}
+                    </div>
+                  </div>
+                ))
+                }
               </div>
             </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-export default ordersToCook;
+          )) : null }
+        </div>
+      </>
+    );
+  }
+}
+
+export default OrdersToCook;

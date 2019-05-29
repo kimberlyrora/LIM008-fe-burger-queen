@@ -1,0 +1,39 @@
+.selection{
+	outline: none;
+	border: none;
+	background-color: #f8d856;
+	color: rgba(220, 20, 60);
+	font-weight: 700;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 3%;
+}
+.common{
+	display: inline-block;
+	
+}
+
+/*.first{
+	position: fixed;
+}
+.second{
+	position: fixed;
+	*/
+
+@media (max-width: 767px) and (orientation:portrait) {
+	.container {
+		flex-direction: column;
+	  }
+	}
+	
+@media (min-width: 768px) and (orientation:landscape) {
+	.container{
+		display: flex;
+	}
+	.container {
+		flex-direction: row;
+	  }
+	.block{
+		width:50%
+	}
+	}
